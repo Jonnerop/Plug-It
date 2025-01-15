@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/*hide uugly top bar */
+.swagger-ui .topbar {
+  display: none;
+}
+
+/*fony family */
+.swagger-ui .info .title {
+  font-family: 'Orbitron', sans-serif;
+  color: black;
+}
+
+.swagger-ui .info .description {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.swagger-ui {
+  font-family: 'Roboto', sans-serif;
+}
+
+.swagger-ui .opblock .opblock-summary-path {
+  font-family: 'Roboto', sans-serif;
+}
+
+.swagger-ui .opblock .opblock-summary-path a {
+  font-family: 'Roboto', sans-serif;
+}
+
+.swagger-ui .information-container p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  color: black;
+}
+
+/*change button color */
+.swagger-ui .btn.authorize {
+  background-color: black;
+  border-color: #32ff7e;
+  color: #ffffff;
+}
+
+/*GET, POST, PUT, DELETE, PATCH colors */
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  background-color: #32ff7e;
+}
+
+.swagger-ui .opblock.opblock-put .opblock-summary-method {
+  background-color: #ffc300;
+}
+
+.swagger-ui .opblock.opblock-delete .opblock-summary-method {
+  background-color: #ff6b6b;
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  background-color: #2b7fe5;
+  border-color: #2b7fe5;
+}
+
+.swagger-ui .opblock.opblock-patch .opblock-summary-method {
+  background-color: #6a6dcd;
+  border-color: #6a6dcd;
+}
+
+/*remove border */
+.swagger-ui .opblock.opblock-patch {
+  background-color: #cecfeb;
+  border: none;
+}
+
+.swagger-ui .opblock.opblock-get {
+  border: none;
+}
+
+.swagger-ui .opblock.opblock-put {
+  border: none;
+}
+
+.swagger-ui .opblock.opblock-delete {
+  border: none;
+}
+
+.swagger-ui .opblock.opblock-post {
+  border: none;
+}
+
+/*schemas */
+.swagger-ui .models {
+  background-color: #1f223d; /*dark background */
+}
+
+.swagger-ui .models .model {
+  color: #ffffff;
+}
+
+.swagger-ui .models-control {
+  color: #ffffff;
+}
+
+.swagger-ui .models h4 {
+  color: #ffffff;
+}
+
+.swagger-ui .models .model-title {
+  color: #ffffff;
+}

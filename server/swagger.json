@@ -1,0 +1,927 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Plug It API",
+    "version": "1.0.0",
+    "description": "API documentation for user management, reviews and contact forms."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/api",
+      "description": "Local Development Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "User's username"
+          },
+          "email": {
+            "type": "string",
+            "description": "User's email address"
+          },
+          "googleId": {
+            "type": "string",
+            "description": "Google ID (optional)"
+          },
+          "picture": {
+            "type": "string",
+            "description": "User's profile picture URL"
+          },
+          "location": {
+            "type": "string",
+            "description": "User's location"
+          },
+          "isAdmin": {
+            "type": "boolean",
+            "description": "Admin status"
+          }
+        }
+      },
+      "ContactForm": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the person"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the person"
+          },
+          "content": {
+            "type": "string",
+            "description": "Message content"
+          }
+        }
+      },
+      "Review": {
+        "type": "object",
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "description": "Rating score between 1 and 5",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "text": {
+            "type": "string",
+            "description": "Text content of the review"
+          },
+          "user": {
+            "type": "string",
+            "description": "ID of the user creating the review"
+          },
+          "station": {
+            "type": "string",
+            "description": "ID of the station being reviewed"
+          }
+        },
+        "required": [
+          "rating",
+          "text",
+          "user",
+          "station"
+        ]
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Operations related to user management"
+    },
+    {
+      "name": "Contact Forms",
+      "description": "Operations related to contact forms"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "security": [],
+        "description": "Retrieve a list of all users.",
+        "responses": {
+          "200": {
+            "description": "List of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to get users"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user",
+        "security": [],
+        "description": "Sign up a new user.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "exampleuser"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "example@user.fi"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "StrongPswd1!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "User with this email already exists"
+          },
+          "500": {
+            "description": "Failed to create user"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "User login",
+        "security": [],
+        "description": "Authenticate a user and return a JWT token.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "example@user.fi"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "StrongPswd1!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid email or password"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get logged-in user information",
+        "description": "Retrieve the information of the currently logged-in user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Failed to fetch user data"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a user by ID",
+        "security": [],
+        "description": "Retrieve details of a specific user by their ID.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid user ID"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Failed to retrieve user"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a user by ID",
+        "description": "Update details of a specific user by their ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "newnewuser"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid user ID"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Failed to update user"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Replace user data",
+        "description": "Find a user by ID and replace their data with the provided new user data.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the user to replace"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "The new username"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "The new email address"
+                  },
+                  "location": {
+                    "type": "string",
+                    "description": "The user's new location"
+                  }
+                }
+              },
+              "example": {
+                "username": "newusername",
+                "email": "newemail@example.com",
+                "location": "New York"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User replaced successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid user ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to replace user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete a user by ID",
+        "description": "Remove a user from the database by their ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the user to delete."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid user ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to delete user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "tags": [
+          "Contact Forms"
+        ],
+        "summary": "Get all contact forms",
+        "description": "Retrieve all submitted contact forms.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of contact forms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContactForm"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to get contact forms"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact Forms"
+        ],
+        "summary": "Create a new contact form",
+        "description": "Submit a new contact form.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactForm"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact form created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactForm"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to create contact form"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/contact/{contactFormId}": {
+      "get": {
+        "tags": [
+          "Contact Forms"
+        ],
+        "summary": "Get a contact form by ID",
+        "description": "Retrieve details of a specific contact form by its ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "contactFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact form found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactForm"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid contact form ID"
+          },
+          "404": {
+            "description": "Contact form not found"
+          },
+          "500": {
+            "description": "Failed to retrieve contact form"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contact Forms"
+        ],
+        "summary": "Delete a contact form by ID",
+        "description": "Remove a contact form from the database by its ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "contactFormId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact form deleted successfully"
+          },
+          "400": {
+            "description": "Invalid contact form ID"
+          },
+          "404": {
+            "description": "Contact form not found"
+          },
+          "500": {
+            "description": "Failed to delete contact form"
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get all reviews",
+        "description": "Retrieve a list of all reviews.",
+        "responses": {
+          "200": {
+            "description": "List of reviews",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Review"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to get reviews"
+          }
+        },
+        "security": []
+      },
+      "post": {
+    "tags": [
+      "Reviews"
+    ],
+    "summary": "Create a new review",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "description": "Add a new review. Requires authentication.",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/Review"
+          },
+          "example": {
+            "rating": 5,
+            "text": "Fantastic service and clean facilities.",
+            "user": "507f1f77bcf86cd799439011",
+            "station": "507f1f77bcf86cd799439012"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Review created successfully"
+      },
+      "401": {
+        "description": "Unauthorized"
+      },
+      "500": {
+        "description": "Failed to create review"
+      }
+    }
+  }
+    },
+    "/reviews/{reviewId}": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Get a review by ID",
+        "description": "Retrieve details of a specific review by its ID.",
+        "parameters": [
+          {
+            "name": "reviewId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Review"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Review not found"
+          },
+          "500": {
+            "description": "Failed to retrieve review"
+          }
+        }
+      },
+      "put": {
+    "tags": [
+      "Reviews"
+    ],
+    "summary": "Update a review by ID",
+    "description": "Update details of a specific review by its ID.",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "reviewId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The ID of the review to update"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/Review"
+          },
+          "example": {
+            "rating": 5,
+            "text": "Updated review: The station has improved a lot!",
+            "user": "507f1f77bcf86cd799439011",
+            "station": "507f1f77bcf86cd799439012"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Review updated successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Review"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized"
+      },
+      "404": {
+        "description": "Review not found"
+      },
+      "500": {
+        "description": "Failed to update review"
+      }
+    }
+  },
+      "delete": {
+        "tags": [
+          "Reviews"
+        ],
+        "summary": "Delete a review by ID",
+        "description": "Remove a review from the database by its ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "reviewId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Review not found"
+          },
+          "500": {
+            "description": "Failed to delete review"
+          }
+        }
+      }
+    }
+  }
+}

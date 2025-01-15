@@ -1,0 +1,168 @@
+[
+    {
+      "stationName": "Station A",
+      "reviews": [
+        { "user": "John Doe", "text": "Great station! Always available.", "rating": 5 },
+        { "user": "Jane Smith", "text": "Convenient location but a bit slow.", "rating": 3 },
+        { "user": "Alex Turner", "text": "Well-maintained and reliable.", "rating": 4 },
+        { "user": "Sophia Brown", "text": "Ample parking space, love it!", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station B",
+      "reviews": [
+        { "user": "Alice Johnson", "text": "Not enough parking space.", "rating": 2 },
+        { "user": "Bob Brown", "text": "Reliable and well-maintained.", "rating": 4 },
+        { "user": "Charlie Green", "text": "Chargers are often occupied.", "rating": 3 },
+        { "user": "Emma White", "text": "Convenient location but lacks maintenance.", "rating": 2 }
+      ]
+    },
+    {
+      "stationName": "Station C",
+      "reviews": [
+        { "user": "Charlie Black", "text": "Fast charging and easy access.", "rating": 5 },
+        { "user": "Olivia Gray", "text": "Close to the city center, very convenient.", "rating": 4 },
+        { "user": "Noah Blue", "text": "Reliable chargers but a bit pricey.", "rating": 3 }
+      ]
+    },
+    {
+      "stationName": "Station D",
+      "reviews": [
+        { "user": "Diana White", "text": "Under maintenance frequently.", "rating": 2 },
+        { "user": "Liam Brown", "text": "Good location but needs more chargers.", "rating": 3 },
+        { "user": "Isabella Green", "text": "Fast charging but lacks shade.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station E",
+      "reviews": [
+        { "user": "Edward Green", "text": "Great spot for charging on road trips.", "rating": 4 },
+        { "user": "Fiona Blue", "text": "Sometimes crowded, but overall good.", "rating": 3 },
+        { "user": "Mason Purple", "text": "Chargers are fast and reliable.", "rating": 5 },
+        { "user": "Mia Black", "text": "Easy access and affordable pricing.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station F",
+      "reviews": [
+        { "user": "Henry Gray", "text": "Only one charger available. Needs improvement.", "rating": 2 },
+        { "user": "Sophia Black", "text": "Charger is slow but functional.", "rating": 3 },
+        { "user": "Elijah White", "text": "Decent station for emergency stops.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station G",
+      "reviews": [
+        { "user": "Grace Purple", "text": "Works perfectly every time!", "rating": 5 },
+        { "user": "Lucas Brown", "text": "Good location, great charging speed.", "rating": 4 },
+        { "user": "Amelia Green", "text": "Affordable pricing but lacks maintenance.", "rating": 3 },
+        { "user": "Benjamin Blue", "text": "Very reliable and fast.", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station H",
+      "reviews": [
+        { "user": "Zoe White", "text": "Location is great, but often crowded.", "rating": 3 },
+        { "user": "Ethan Brown", "text": "Reliable chargers and good lighting.", "rating": 4 },
+        { "user": "Lily Green", "text": "Affordable but could use better signage.", "rating": 3 }
+      ]
+    },
+    {
+      "stationName": "Station I",
+      "reviews": [
+        { "user": "James Black", "text": "Maintenance issues frequently.", "rating": 2 },
+        { "user": "Ava Gray", "text": "Location is good, but chargers are slow.", "rating": 3 },
+        { "user": "Logan White", "text": "Affordable and reliable.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station J",
+      "reviews": [
+        { "user": "Sophia Brown", "text": "Great station with multiple connectors.", "rating": 5 },
+        { "user": "Mason Gray", "text": "Ample parking but lacks shade.", "rating": 4 },
+        { "user": "Emma Black", "text": "Convenient location for travelers.", "rating": 4 },
+        { "user": "Oliver Green", "text": "Could use faster charging options.", "rating": 3 }
+      ]
+    },
+    {
+      "stationName": "Station K",
+      "reviews": [
+        { "user": "Aiden Blue", "text": "Reliable chargers, good location.", "rating": 4 },
+        { "user": "Chloe White", "text": "Affordable pricing but needs cleaning.", "rating": 3 },
+        { "user": "Isabella Black", "text": "Fast and convenient.", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station L",
+      "reviews": [
+        { "user": "Ethan Gray", "text": "Crowded during peak hours.", "rating": 3 },
+        { "user": "Mia Green", "text": "Good speed and affordable pricing.", "rating": 4 },
+        { "user": "Lucas Black", "text": "Well-lit and secure.", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station M",
+      "reviews": [
+        { "user": "Amelia White", "text": "Only one charger available.", "rating": 2 },
+        { "user": "Noah Gray", "text": "Reliable and fast.", "rating": 4 },
+        { "user": "Liam Brown", "text": "Great for a quick stop.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station N",
+      "reviews": [
+        { "user": "Zoe Green", "text": "Frequent maintenance issues.", "rating": 2 },
+        { "user": "Ava Black", "text": "Affordable but slow charging.", "rating": 3 },
+        { "user": "Mason Gray", "text": "Good spot for travelers.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station O",
+      "reviews": [
+        { "user": "Liam White", "text": "Ample parking and good lighting.", "rating": 4 },
+        { "user": "Emma Blue", "text": "Fast chargers but a bit pricey.", "rating": 3 },
+        { "user": "Sophia Black", "text": "Reliable and well-maintained.", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station P",
+      "reviews": [
+        { "user": "Olivia Gray", "text": "Great location but crowded.", "rating": 3 },
+        { "user": "James Black", "text": "Good speed and availability.", "rating": 4 },
+        { "user": "Chloe White", "text": "Affordable and convenient.", "rating": 5 }
+      ]
+    },
+    {
+      "stationName": "Station Q",
+      "reviews": [
+        { "user": "Logan Green", "text": "Easy access and reliable.", "rating": 4 },
+        { "user": "Mia Brown", "text": "Fast and affordable.", "rating": 5 },
+        { "user": "Ethan Black", "text": "Good chargers but lacks parking.", "rating": 3 }
+      ]
+    },
+    {
+      "stationName": "Station R",
+      "reviews": [
+        { "user": "Isabella White", "text": "Under maintenance frequently.", "rating": 2 },
+        { "user": "Benjamin Blue", "text": "Decent charging speed.", "rating": 3 },
+        { "user": "Sophia Brown", "text": "Affordable but not reliable.", "rating": 3 }
+      ]
+    },
+    {
+      "stationName": "Station S",
+      "reviews": [
+        { "user": "Emma Green", "text": "Great location and fast chargers.", "rating": 5 },
+        { "user": "Liam Blue", "text": "Reliable but crowded.", "rating": 4 },
+        { "user": "Ava White", "text": "Good option for quick stops.", "rating": 4 }
+      ]
+    },
+    {
+      "stationName": "Station T",
+      "reviews": [
+        { "user": "Olivia Black", "text": "Excellent service and fast chargers.", "rating": 5 },
+        { "user": "Noah Gray", "text": "Convenient but lacks maintenance.", "rating": 3 },
+        { "user": "Sophia Brown", "text": "Great for long trips.", "rating": 4 }
+      ]
+    }
+  ]
+  
