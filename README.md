@@ -92,13 +92,6 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 📖 Documentation
-
-- **User Manual**: Detailed steps for using the app.  
-- **API Documentation**: Swagger UI available for backend API testing.  
-
----
-
 ## ✨ Future Enhancements
 
 - Add support for international charging station data.  
