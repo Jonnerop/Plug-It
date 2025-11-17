@@ -4,7 +4,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 🌟 Features
+## Features
 
 - **EV Charging Station Locator**: Fetches live station data using the Open Charge Map API.  
 - **Interactive Map**: Displays charging stations dynamically with detailed information, using Leaflet.  
@@ -15,7 +15,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 🔧 Technical Specifications
+## Technical Specifications
 
 - **Frontend**: React with React Router DOM for seamless navigation.  
 - **Backend**: Express.js with Node.js for REST API implementation.  
@@ -27,7 +27,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 📦 Components
+## Components
 
 - React Frontend  
 - Express.js Backend  
@@ -36,7 +36,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 🛠 Usage
+## Usage
 
 1. **Search for Charging Stations**: Use the interactive map to locate stations based on current location or search queries.  
 2. **Save Favorites**: Mark stations for quick access later.  
@@ -84,7 +84,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## ⚙️ Troubleshooting
+## Troubleshooting
 
 - **API Errors**: Ensure the Open Charge Map and Mapbox API keys are valid and configured.  
 - **Authentication Issues**: Check Google OAuth credentials and ensure proper redirection URIs are set.  
@@ -92,7 +92,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## ✨ Future Enhancements
+## Future Enhancements
 
 - Add support for international charging station data.  
 - Implement advanced filtering options (e.g., connector types, charging speeds).  
@@ -100,7 +100,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 ---
 
-## 🤝 Contributors
+## Contributors
 
 - Ade Aiho
 - Heta Hartzell
