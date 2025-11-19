@@ -49,7 +49,7 @@ Plug It is a web application developed as part of a Web Development course at Me
 
 1. **Clone the Repository**:  
    ```bash  
-   git clone https://github.com/your-repo/plug-it.git  
+   git clone https://github.com/Jonnerop/plug-it.git  
    cd plug-it  
    ```  
 
