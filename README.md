@@ -2,6 +2,11 @@
 
 Plug It is a web application developed as part of a Web Development course at Metropolia University of Applied Sciences. The app helps electric vehicle (EV) users locate charging stations across Finland with real-time data and an interactive map. The project emphasizes usability, secure authentication, and mobile responsiveness.
 
+The project is deployed on Render:
+
+* Client: https://web-project-group-6-client.onrender.com/
+* Server: https://plugit-backend.onrender.com/
+
 ---
 
 ## Features
