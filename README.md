@@ -24,10 +24,7 @@ The project is deployed on Render:
 
 - **Frontend**: React with React Router DOM for seamless navigation.  
 - **Backend**: Express.js with Node.js for REST API implementation.  
-- **Database**: MongoDB for storing user data, reviews, and favorites.  
-- **Authentication**: JWT for secure user sessions and Google OAuth for easy login.  
-- **Mapping**: Leaflet and React-Leaflet for interactive maps and geolocation.  
-- **Styling**: Tailwind CSS for responsive design.  
+- **Database**: MongoDB for storing user data, reviews, and favorites.    
 - **Hosting**: Render (Frontend and Backend).  
 
 ---
@@ -94,14 +91,6 @@ The project is deployed on Render:
 - **API Errors**: Ensure the Open Charge Map and Mapbox API keys are valid and configured.  
 - **Authentication Issues**: Check Google OAuth credentials and ensure proper redirection URIs are set.  
 - **Database Connection**: Verify MongoDB URI and ensure the database server is running.  
-
----
-
-## Future Enhancements
-
-- Add support for international charging station data.  
-- Implement advanced filtering options (e.g., connector types, charging speeds).  
-- Enable real-time station availability updates.   
 
 ---
 
