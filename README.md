@@ -29,15 +29,6 @@ The project is deployed on Render:
 
 ---
 
-## Components
-
-- React Frontend  
-- Express.js Backend  
-- MongoDB Database  
-- Open Charge Map API Integration  
-
----
-
 ## Getting Started
 
 ### Prerequisites
